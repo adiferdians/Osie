@@ -74,7 +74,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon">
-                    <div class="sidebar-brand-text mx-3"><img style="width: 190px; background-color: white; border-radius: 10px;" src="\assets\img\logo.png" alt=""></div>
+                    <div class="sidebar-brand-text mx-3"><img style="width: 150px;" src="\assets\img\logo.png" alt=""></div>
                 </div>
             </a>
             <!-- Divider -->
@@ -161,7 +161,7 @@
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Marlion</span>
+                            <span>Copyright &copy; Osie</span>
                         </div>
                     </div>
                 </footer>

@@ -1,8 +1,7 @@
-wis di<?php
+<?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginController;
-use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\verificationController;
 /*

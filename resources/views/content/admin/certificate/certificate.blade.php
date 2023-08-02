@@ -9,13 +9,14 @@
     <div class="row">
 
         <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-3 mb-3">
+        <div class="col-xl-4 col-md-4 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Jumlah sertifikat yang terbit</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$amount}} Piece</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -24,13 +25,14 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-3 mb-3">
+        <div class="col-xl-4 col-md-4 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Jumlah sertifikat yang aktif</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$active}} Piece</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-check-double fa-2x text-gray-300"></i>
@@ -39,31 +41,17 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-3 mb-3">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Jumlah sertifikat yang Withdraw</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-book fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-3 mb-3">
+        <div class="col-xl-4 col-md-4 mb-4">
             <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Jumlah sertifikat yang Draft</div>
+                                Jumlah sertifikat yang Withdraw</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$inactive}} Piece</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fa fa-file fa-2x text-gray-300"></i>
+                            <i class="fas fa-book fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -201,22 +189,24 @@
 
     function showQrCode(number, name) {
         let newNumber = number.replace(new RegExp("/", "g"), "");
-        
+
         axios.get(`/certificate/qrcode/${newNumber}`)
             .then(function({
                 data
             }) {
+                console.log(data);
                 $('.modal-title').html(`QRCode untuk ${name}`);
                 $('.modal-body').html(`<div class='text-center'>
-                <div>
-                    <img width='300' height='auto' src='data:image/svg+xml;base64,${data.DATA}' />
-                </div><br>
                     <div>
-                        <a href='data:image/svg+xml;base64,${data.DATA}' class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" download=${name}>
-                        <i class="fas fa-download"></i>  Download QR Code</a>
-                    </div>
-                </div>`);
+                        <img width='300' height='auto' src='data:image/svg+xml;base64,${data.DATA}' />
+                    </div><br>
+                        <div>
+                            <a href='data:image/svg+xml;base64,${data.DATA}' class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" download=${name}.svg>
+                            <i class="fas fa-download"></i>  Download QR Code</a>
+                        </div>
+                    </div>`);
                 $('#modalSmall').modal('show');
+
             })
             .catch(function(error) {
                 console.log(error);

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merlion</title>
-    <link rel="icon" type="image/png" href="{{ asset('assets/img/logo/logo1.png') }}">
+    <title>Osie</title>
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/title.png') }}">
 
     <!-- Custom fonts for this template-->
     <link href="{{ URL::asset('/assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -29,7 +29,7 @@
         <div id="content-wrapper" class="d-flex flex-column">
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                 <div>
-                    <img class="inverted" src="{{ asset('assets/img/logo/logo.png') }}" alt="">
+                    <img class="inverted" style="width: 150px;" src="{{ asset('assets/img/logo.png') }}" alt="">
                 </div>
             </nav>
             <div class="contentVerif">
@@ -69,24 +69,17 @@
                                 <table class="table table-responsive" id="dataTable" cellspacing="0">
                                     <tbody>
                                         <tr>
-                                            <td>Organization</td>
+                                            <td>Name</td>
                                             <td>:</td>
-                                            @if(isset($certificate))
-                                            <td>{{$certificate[0]['name']}}</td>
+                                            @if (isset($certificate))
+                                            <td>{{ $certificate[0]['name'] }}</td>
                                             @endif
                                         </tr>
                                         <tr>
-                                            <td>Location</td>
+                                            <td>Certification Title</td>
                                             <td>:</td>
                                             @if(isset($certificate))
-                                            <td>{{$certificate[0]['address']}}</td>
-                                            @endif
-                                        </tr>
-                                        <tr>
-                                            <td>Certification Scope</td>
-                                            <td>:</td>
-                                            @if(isset($certificate))
-                                            <td>{{$certificate[0]['scope']}}</td>
+                                            <td>{{$certificate[0]['title']}}</td>
                                             @endif
                                         </tr>
                                         <tr>
@@ -97,24 +90,10 @@
                                             @endif
                                         </tr>
                                         <tr>
-                                            <td>Certification Date</td>
+                                            <td>Certificate Date</td>
                                             <td>:</td>
                                             @if(isset($certificate))
                                             <td>{{$certificate[0]['date']}}</td>
-                                            @endif
-                                        </tr>
-                                        <tr>
-                                            <td>Expiration Date</td>
-                                            <td>:</td>
-                                            @if(isset($certificate))
-                                            <td>{{$certificate[0]['expired']}}</td>
-                                            @endif
-                                        </tr>
-                                        <tr>
-                                            <td>Status</td>
-                                            <td>:</td>
-                                            @if(isset($certificate))
-                                            <td>{{$certificate[0]['status']}}</td>
                                             @endif
                                         </tr>
                                     </tbody>
@@ -128,13 +107,15 @@
     </div>
 
     <!-- Footer -->
-    <footer class="sticky-footer bg-white" style="height: 100px;">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Merlion Certification Body</span>
+    <div>
+        <footer class="sticky-footer bg-white" style="height: 50px;">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Osie Certification</span>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
     <!-- End of Footer -->
 </body>
 
@@ -161,33 +142,21 @@
                     var tableBody = $('#dataTable tbody');
                     tableBody.empty();
                     var row = '<tr>' +
-                        '<td>' + "Organization" + '</td>' +
+                        '<td>' + "Name" + '</td>' +
                         '<td>' + ":" + '</td>' +
                         '<td>' + data.name + '</td>' +
                         '</tr>' + '<tr>' +
-                        '<td>' + "Location" + '</td>' +
+                        '<td>' + " Certificate Title" + '</td>' +
                         '<td>' + ":" + '</td>' +
-                        '<td>' + data.address + '</td>' +
-                        '</tr>' + '<tr>' +
-                        '<td>' + "Certification Scope" + '</td>' +
-                        '<td>' + ":" + '</td>' +
-                        '<td>' + data.scope + '</td>' +
+                        '<td>' + data.title + '</td>' +
                         '</tr>' + '<tr>' +
                         '<td>' + "Certification Number" + '</td>' +
                         '<td>' + ":" + '</td>' +
                         '<td>' + data.number + '</td>' +
                         '</tr>' + '<tr>' +
-                        '<td>' + "Certification Date" + '</td>' +
+                        '<td>' + "Certificate Date" + '</td>' +
                         '<td>' + ":" + '</td>' +
                         '<td>' + data.date + '</td>' +
-                        '</tr>' + '<tr>' +
-                        '<td>' + "Expiration Date" + '</td>' +
-                        '<td>' + ":" + '</td>' +
-                        '<td>' + data.expired + '</td>' +
-                        '</tr>' + '<tr>' +
-                        '<td>' + "Status" + '</td>' +
-                        '<td>' + ":" + '</td>' +
-                        '<td>' + data.status + '</td>' +
                         '</tr>';
                     tableBody.append(row);
                 })
@@ -203,25 +172,16 @@
                     var tableBody = $('#dataTable tbody');
                     tableBody.empty();
                     var row = '<tr>' +
-                        '<td>' + "Organization" + '</td>' +
+                        '<td>' + "Name" + '</td>' +
                         '<td>' + ":" + '</td>' +
                         '</tr>' + '<tr>' +
-                        '<td>' + "Location" + '</td>' +
-                        '<td>' + ":" + '</td>' +
-                        '</tr>' + '<tr>' +
-                        '<td>' + "Certification Scope" + '</td>' +
+                        '<td>' + "Certificate Title" + '</td>' +
                         '<td>' + ":" + '</td>' +
                         '</tr>' + '<tr>' +
                         '<td>' + "Certification Number" + '</td>' +
                         '<td>' + ":" + '</td>' +
                         '</tr>' + '<tr>' +
                         '<td>' + "Certification Date" + '</td>' +
-                        '<td>' + ":" + '</td>' +
-                        '</tr>' + '<tr>' +
-                        '<td>' + "Expiration Date" + '</td>' +
-                        '<td>' + ":" + '</td>' +
-                        '</tr>' + '<tr>' +
-                        '<td>' + "Status" + '</td>' +
                         '<td>' + ":" + '</td>' +
                         '</tr>';
                     tableBody.append(row);

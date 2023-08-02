@@ -4,16 +4,6 @@
         <td><input type="text" style="width: 100%" class="form-control" placeholder="Nama" type="text" id="name"></td>
     </tr>
     <tr>
-        <td>Tipe Training</td>
-        <td>
-            <select class="form-control" id="type" style="width: 100%" >
-                <option>Public Training</option>
-                <option>Inhouse Training</option>
-                <option>Custom Training</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
         <td>Title</td>
         <td><input type="text" style="width: 100%" class="form-control" placeholder="Title" type="text" id="title">
         </td>
@@ -21,9 +11,9 @@
     <tr>
     <td>Trining Mulai Dan Training Selesai</td>
         <td>
-            <div style="display: flex;">
-                <input type="date" style="width: 50%;" class="form-control" type="text" id="start">
-                <input type="date" style="width: 50%;" class="form-control" type="text" id="end">
+            <div style="display: flex; justify-content: space-between;">
+                <input type="date" style="width: 47%;" class="form-control" type="text" id="start">
+                <input type="date" style="width: 47%;" class="form-control" type="text" id="end">
             </div>
         </td>
     </tr>
@@ -51,7 +41,6 @@
 
         axios.post('/certificate/send', {
             name,
-            type,
             title,
             start,
             end,

@@ -15,10 +15,16 @@ class CertificateController extends Controller
     public function index()
     {
         $countCertificate = certificate::count();
+        $today = Carbon::now();
+        $active = certificate::whereDate('date', '>=', $today)->count();
+        $inactive = $countCertificate - $active;
+
         $certificate = certificate::orderByDesc('id')->paginate(10);
         return view('content.admin.certificate.certificate', [
             'certificate' => $certificate,
             'amount' => $countCertificate,
+            'active' => $active,
+            'inactive' => $inactive
         ]);
     }
 
@@ -32,7 +38,6 @@ class CertificateController extends Controller
         $validate = Validator::make($request->all(), [
             'name'   => 'required',
             'title'   => 'required',
-            'type'   => 'required',
             'start'   => 'required',
             'end'   => 'required',
             'date'   => 'required',
@@ -60,14 +65,7 @@ class CertificateController extends Controller
 
         $bulan = date('m', strtotime($request->date));
         $tahun = date('Y', strtotime($request->date));
-
-        if ($request->type == "Public Training") {
-            $kodeType = "PT";
-        } elseif ($request->type == "Inhouse Training") {
-            $kodeType = "IT";
-        } elseif ($request->type == "Custom Training") {
-            $kodeType = "CT";
-        }
+        $kodeType = "CT";
 
         $bulan_romawi = '';
         if ($bulan >= 1 && $bulan <= 12) {
@@ -93,7 +91,7 @@ class CertificateController extends Controller
             $data = [
                 'name' => $request->name,
                 'title' => $request->title,
-                'type' => $request->type,
+                'type' => "Custom Training",
                 'number' => $code . "/" . $kodeType . "/" . $bulan_romawi . "/" . $tahun,
                 'number_convert' => $code . $kodeType . $bulan_romawi . $tahun,
                 'start' => $request->start,
@@ -145,7 +143,6 @@ class CertificateController extends Controller
             $data = [
                 'name' => $request->name,
                 'title' => $request->title,
-                'type' => $request->type,
                 'number' => $request->number,
                 'number_convert' => $request->number_convert,
                 'start' => $request->start,
@@ -184,7 +181,7 @@ class CertificateController extends Controller
         $qrCode = QrCode::format('svg')
             ->size(1000)
             ->errorCorrection('H')
-            ->generate(url("/verifikasi/" . $number));
+            ->generate(url("/" . $number));
 
         return response()->json([
             'DATA' => base64_encode($qrCode)

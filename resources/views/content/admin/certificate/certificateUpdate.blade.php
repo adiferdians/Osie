@@ -5,40 +5,35 @@
     </tr>
     <tr>
         <td>Nama</td>
-        <td><input type="text" style="width: 100%" class="input-group-text" placeholder="Nama" type="text" id="name" value="{{$cert->name}}"></td>
-    </tr>
-    <tr>
-        <td>Tipe Training</td>
-        <td>
-        <select class="form-control" id="type" style="width: 100%" >
-                <option>Public Training</option>
-                <option>Inhouse Training</option>
-                <option>Custom Training</option>
-            </select>
-        </td>
+        <td><input type="text" style="width: 100%" class="form-control" placeholder="Nama" type="text" id="name" value="{{$cert->name}}"></td>
     </tr>
     <tr>
         <td>Title</td>
-        <td><input type="text" style="width: 100%" class="input-group-text" placeholder="Title" type="text" id="title" value="{{$cert->title}}">
+        <td><input type="text" style="width: 100%" class="form-control" placeholder="Title" type="text" id="title" value="{{$cert->title}}">
+        </td>
+    </tr>
+    <tr>
+        <td>Type</td>
+        <td><input type="text" style="width: 100%" class="form-control" placeholder="Type" type="text" id="title" value="{{$cert->type}}" disabled>
         </td>
     </tr>
     <tr>
         <td>Nomor Sertifikat</td>
-        <td><input type="text" style="width: 100%" class="input-group-text" placeholder="Nomor Sertifikat" type="text" id="number" value="{{$cert->number}}">
+        <td><input type="text" style="width: 100%" class="form-control" placeholder="Nomor Sertifikat" type="text" id="number" value="{{$cert->number}}" disabled>
         </td>
     </tr>
     <tr>
         <td>Trining Mulai Dan Training Selesai</td>
         <td>
-            <div style="display: flex;">
-                <input type="date" style="width: 50%;" class="input-group-text" type="text" id="start" value="{{$cert->start}}">
-                <input type="date" style="width: 50%;" class="input-group-text" type="text" id="end" value="{{$cert->end}}">
+            <div style="display: flex; justify-content: space-between;">
+                <input type="date" style="width: 47%;" class="form-control" type="text" id="start" value="{{$cert->start}}">
+                <input type="date" style="width: 47%;" class="form-control" type="text" id="end" value="{{$cert->end}}">
             </div>
         </td>
     </tr>
     <tr>
         <td>Tanggal Sertifikat</td>
-        <td><input type="date" style="width: 100%;" class="input-group-text" type="text" id="date" value="{{$cert->date}}">
+        <td><input type="date" style="width: 100%;" class="form-control" type="text" id="date" value="{{$cert->date}}">
         </td>
     </tr>
     <tr>
@@ -64,7 +59,6 @@
 
         axios.post('/certificate/sendUpdate/' + id, {
             name,
-            type,
             title,
             number,
             number_convert,
